@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- A linha abaixo é a mais importante para o celular entender o zoom correto -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para meu amor</title>
     <style>
@@ -38,7 +37,7 @@
 
         /* Envelope BEM maior para ser fácil de clicar no celular */
         #envelope {
-            font-size: 150px; /* Aumentado de 120px para 150px */
+            font-size: 140px; /* Aumentado de 120px para 150px */
             display: block;
             animation: pulsar 2s infinite;
             filter: drop-shadow(0 0 15px rgba(255, 107, 129, 0.5));
@@ -63,14 +62,13 @@
             padding: 40px 25px; /* Ajuste no preenchimento interno */
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            width: 85%; /* No celular, ocupa 85% da tela */
+            width: 75%; /* No celular, ocupa 85% da tela */
             max-width: 400px; /* No PC, não passa de 400px */
             border: 2px solid #ffdde1;
             position: relative;
             animation: abrirCartao 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             box-sizing: border-box; /* Impede que o padding quebre a largura */
         }
-
         /* Detalhe de "fita" no topo do cartão */
         #mensagem::before {
             content: '';
@@ -84,39 +82,32 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
-
         h2 { 
             color: #d63031; 
             margin-top: 0;
             font-size: 28px; /* Título maior */
             letter-spacing: 1px;
         }
-
         p { 
             color: #4a4a4a; 
             line-height: 1.6; 
             font-size: 20px; /* Texto maior e mais legível no celular */
         }
-
         strong {
             color: #d63031;
             font-size: 22px; /* Destaque maior */
         }
-
         @keyframes abrirCartao {
             from { opacity: 0; transform: translateY(50px) scale(0.8); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
-
-        /* Partículas flutuantes */
-        .particula {
+        /* Partículas flutuantes */.particula {
             position: absolute;
             user-select: none;
             pointer-events: none;
             animation: flutuar 2.5s ease-in forwards;
             z-index: 1;
         }
-
         @keyframes flutuar {
             0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100vh) scale(1.5) rotate(360deg); opacity: 0; }
@@ -124,7 +115,6 @@
     </style>
 </head>
 <body>
-
     <div class="container" onclick="abrirCarta()">
         <div id="envelope">✉️</div>
         <div id="mensagem">
@@ -133,34 +123,26 @@
             <p><strong>Amo você, ao infinito ......!</strong></p>
         </div>
     </div>
-
     <script>
         function abrirCarta() {
             document.getElementById('envelope').style.display = 'none';
             document.getElementById('mensagem').style.display = 'block';
-
             const emojis = ['❤️', '💖', '✨', '💕', '🥰'];
-
             for (let i = 0; i < 45; i++) {
                 setTimeout(() => {
                     criarParticula(emojis);
                 }, i * 60);
             }
         }
-
         function criarParticula(emojis) {
             const particula = document.createElement('div');
-            particula.className = 'particula';
-            
+            particula.className = 'particula'; 
             const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
-            particula.innerHTML = emojiAleatorio;
-            
+            particula.innerHTML = emojiAleatorio; 
             particula.style.left = (Math.random() * 100) + 'vw';
             particula.style.top = '100vh'; 
-            particula.style.fontSize = (Math.random() * 30 + 20) + 'px'; /* Corações um pouco maiores também */
-            
+            particula.style.fontSize = (Math.random() * 30 + 20) + 'px'; 
             document.body.appendChild(particula);
-
             setTimeout(() => {
                 particula.remove();
             }, 2500);
